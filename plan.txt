@@ -1,238 +1,142 @@
-# VaelixOS: Total System Architecture Plan (Updated)
-
-## 1. Kernel (Core of Everything)
-
-### Part Details
-
-- **Language**: Pure Rust (C bridges only for hardware compatibility)
-  - **Explanation**: The kernel is primarily written in Rust, with minimal C code used only for hardware compatibility. This ensures a high level of security and performance.
-
-- **Core Style**: Microkernel with modular extensions
-  - **Explanation**: The kernel follows a microkernel architecture, where every service, including the file system, inter-process communication (IPC), and networking, is a hot-pluggable module. This allows for high modularity and flexibility.
-
-- **Memory Management**: Handwritten minimal allocator (vaelix_alloc crate) with support for page faults, swapping (later)
-  - **Explanation**: The kernel uses a custom, minimal allocator for memory management, which supports page faults and will later include swapping. This ensures efficient memory usage and management.
-
-- **Process Management**: Lightweight "tasklets" (fast green threads over real threads)
-  - **Explanation**: The kernel uses lightweight "tasklets," which are fast green threads over real threads, for process management. This allows for efficient multitasking and resource management.
-
-- **IPC**: Super-simple message passing over named channels
-  - **Explanation**: The kernel uses a simple message-passing system over named channels for inter-process communication (IPC). This ensures efficient and reliable communication between processes.
-
-- **Scheduling**: Priority and fair scheduling — with optional real-time flags for critical apps
-  - **Explanation**: The kernel uses a priority and fair scheduling algorithm, with optional real-time flags for critical applications. This ensures that critical applications get the necessary resources while maintaining fairness for other processes.
-
-- **Drivers**: Pull from Linux driver packs → Translate via lightweight shims
-  - **Explanation**: The kernel uses drivers from Linux driver packs, which are translated via lightweight shims. This ensures compatibility with a wide range of hardware.
-
-- **Bootloader**: Custom one (VaelixBoot) — super simple, loads kernel + modules by detection
-  - **Explanation**: The kernel uses a custom bootloader (VaelixBoot), which is simple and loads the kernel and modules by detection. This ensures a smooth and efficient boot process.
-
-- **FS Driver**: Native: vxfs (Vaelix Filesystem) — Journaling, small, safe
-  - **Explanation**: The kernel uses a native file system (vxfs), which is journaling, small, and safe. This ensures data integrity and reliability.
-
-- **Logging**: Kernel event ring buffer + flush-to-disk daemon (vxlog)
-  - **Explanation**: The kernel uses a kernel event ring buffer and a flush-to-disk daemon (vxlog) for logging. This ensures efficient and reliable logging of kernel events.
-
-- **Hardware Compatibility**: Forked from Linux drivers + our own native in Rust where needed
-  - **Explanation**: The kernel uses drivers forked from Linux, with native Rust drivers where needed. This ensures compatibility with a wide range of hardware.
-
-- **Real-Time Malware Detection**: Custom live, real-time malware detection at kernel level, integrated with ClamAV and other trusted open-source systems, capable of identifying and neutralizing threats without affecting performance.
-  - **Explanation**: The kernel includes a custom, real-time malware detection system at the kernel level, integrated with ClamAV and other trusted open-source systems. This ensures that threats are identified and neutralized without affecting performance.
-
-## 2. Graphics Subsystem (Custom - "VegaGX")
-
-### Part Details
-
-- **GPU Access**: Direct framebuffer first, GPU acceleration later (Vulkan-based ideally, support OpenGL 2 and newer)
-  - **Explanation**: The graphics subsystem initially uses direct framebuffer access, with GPU acceleration planned for later (ideally Vulkan-based, supporting OpenGL 2 and newer). This ensures a smooth and efficient graphics rendering process.
-
-- **Display Server**: VegaGX — ultra-minimal, handles windows, compositing, input
-  - **Explanation**: The graphics subsystem uses a minimal display server (VegaGX), which handles windows, compositing, and input. This ensures a lightweight and efficient display server.
-
-- **Input Handling**: Hotplug keyboard, mouse, touch (driver layer feeds into VegaGX)
-  - **Explanation**: The graphics subsystem supports hotplugging for keyboard, mouse, and touch input, with the driver layer feeding into VegaGX. This ensures a seamless and efficient input handling process.
-
-- **Window Compositor**: Basic layer stacking first; fancy effects added modularly
-  - **Explanation**: The graphics subsystem initially uses basic layer stacking for window compositing, with fancy effects added modularly. This ensures a lightweight and efficient window compositing process.
-
-- **Render API**: 2D first (shapes, text, images); 3D pipeline later (through Vulkan module)
-  - **Explanation**: The graphics subsystem initially supports 2D rendering (shapes, text, images), with a 3D pipeline planned for later (through a Vulkan module). This ensures a smooth and efficient rendering process.
-
-- **Window System**: Clients talk to VegaGX over lightweight IPC
-  - **Explanation**: The graphics subsystem uses a lightweight IPC system for communication between clients and VegaGX. This ensures efficient and reliable communication.
-
-- **Fonts**: Embed Fira Sans, Fira Mono, or custom clean font
-  - **Explanation**: The graphics subsystem embeds Fira Sans, Fira Mono, or a custom clean font. This ensures a consistent and clean font rendering process.
-
-- **Theme**: OLED Black base with Neon Fuchsia/Purple highlights
-  - **Explanation**: The graphics subsystem uses an OLED Black base with Neon Fuchsia/Purple highlights for the theme. This ensures a visually appealing and consistent theme.
-
-## 3. User Interface Layer ("VXUI")
-
-### Part Details
-
-- **Language**: Rust (VXUI toolkit)
-  - **Explanation**: The user interface layer is written in Rust using the VXUI toolkit. This ensures a high level of security and performance.
-
-- **Style**: Ultra modular: widgets are loaded on demand
-  - **Explanation**: The user interface layer is ultra-modular, with widgets loaded on demand. This ensures efficient and flexible widget management.
-
-- **Core Widgets**: Button, Label, TextBox, Panel, List, Grid, Canvas
-  - **Explanation**: The user interface layer includes core widgets such as Button, Label, TextBox, Panel, List, Grid, and Canvas. This ensures a comprehensive and flexible widget set.
-
-- **Animations**: GPU-based when available; otherwise CPU-based interpolations
-  - **Explanation**: The user interface layer uses GPU-based animations when available, otherwise CPU-based interpolations. This ensures smooth and efficient animations.
-
-- **Theme System**: JSON-style theme files; user-editable (hot reload)
-  - **Explanation**: The user interface layer uses JSON-style theme files, which are user-editable and support hot reloading. This ensures a flexible and customizable theme system.
-
-- **Desktop Environment**: VaelixDE (built over VXUI and VegaGX)
-  - **Explanation**: The user interface layer includes a desktop environment (VaelixDE), built over VXUI and VegaGX. This ensures a comprehensive and integrated desktop environment.
-
-- **Window Manager**: Tiling by default + floating option
-  - **Explanation**: The user interface layer uses a tiling window manager by default, with a floating option. This ensures efficient and flexible window management.
-
-- **Notifications**: Minimal, expandable hover-panels
-  - **Explanation**: The user interface layer includes minimal, expandable hover-panels for notifications. This ensures a clean and efficient notification system.
-
-## 4. Package Management ("vxp")
-
-### Part Details
-
-- **Source Hosting**: GitHub repositories
-  - **Explanation**: The package management system uses GitHub repositories for source hosting. This ensures a reliable and efficient source hosting system.
-
-- **Manifest**: vx.toml — Name, Version, GitHub Repo, Build Instructions
-  - **Explanation**: The package management system uses a vx.toml manifest, which includes the name, version, GitHub repository, and build instructions. This ensures a comprehensive and efficient package management system.
-
-- **Install Mode**: Source build or precompiled binaries
-  - **Explanation**: The package management system supports both source build and precompiled binaries for installation. This ensures flexibility and efficiency in the installation process.
-
-- **Updating**: GitHub API to check latest releases/tags
-  - **Explanation**: The package management system uses the GitHub API to check for the latest releases and tags. This ensures efficient and reliable updates.
-
-- **Dependency Handling**: Ultra-simple dependency resolution
-  - **Explanation**: The package management system uses a simple dependency resolution system. This ensures efficient and reliable dependency management.
-
-- **Security**: GPG signatures optional, SHA256 checksum enforced
-  - **Explanation**: The package management system supports optional GPG signatures and enforces SHA256 checksums for security. This ensures a secure and reliable package management system.
-
-## 5. Networking
-
-### Part Details
-
-- **Network Stack**: Modular (Ethernet/IPv4/IPv6 core first)
-  - **Explanation**: The networking system uses a modular network stack, with Ethernet/IPv4/IPv6 core first. This ensures a flexible and efficient networking system.
-
-- **DHCP Client**: vxnetd
-  - **Explanation**: The networking system uses a DHCP client (vxnetd). This ensures efficient and reliable network configuration.
-
-- **DNS Resolver**: Internal + public fallback (Cloudflare 1.1.1.2 default)
-  - **Explanation**: The networking system uses an internal DNS resolver with a public fallback (Cloudflare 1.1.1.2 default). This ensures efficient and reliable DNS resolution.
-
-- **HTTPS Support**: Rustls for SSL
-  - **Explanation**: The networking system uses Rustls for SSL support. This ensures a secure and efficient networking system.
-
-- **Built-in Apps**: Minimal web browser, Git client baked into vxp, Simple editor
-  - **Explanation**: The networking system includes a minimal web browser, a Git client baked into vxp, and a simple editor. This ensures a comprehensive and efficient set of built-in applications.
-
-## 6. Boot Sequence
-
-### Step Details
-
-1. **VaeBoot loads kernel + hardware detection modules**
-   - **Explanation**: The boot sequence starts with VaeBoot loading the kernel and hardware detection modules. This ensures a smooth and efficient boot process.
-
-2. **Kernel loads core services (mem, proc, IPC)**
-   - **Explanation**: The kernel then loads core services such as memory management, process management, and inter-process communication (IPC). This ensures a comprehensive and efficient boot process.
-
-3. **Init system (vinit) launches**
-   - **Explanation**: The init system (vinit) launches next. This ensures a smooth and efficient system initialization process.
-
-4. **vinit spawns VegaGX + network stack**
-   - **Explanation**: vinit then spawns VegaGX and the network stack. This ensures a comprehensive and efficient system initialization process.
-
-5. **vinit launches login manager (vxlogin)**
-   - **Explanation**: vinit then launches the login manager (vxlogin). This ensures a smooth and efficient login process.
-
-6. **After login: VDE desktop with VXUI loads**
-   - **Explanation**: After login, the VDE desktop with VXUI loads. This ensures a comprehensive and efficient desktop environment.
-
-## Filesystem Layout
-
-```bash
-/
- ├── tool/         # Core binaries (vxinit, vxlogin, vxpkg, etc.)
- ├── boot/        # Kernel and bootloader
- ├── dev/         # Device nodes
- ├── inx/         # Config files
- ├── sys/        # User homes
- ├── lib/         # Shared libraries
- ├── modules/     # Kernel/driver modules
- ├── opt/         # Optional software
- ├── tmp/         # Temporary files
- ├── zsr/         # Userland software
- └── vix/         # Variable data (logs, dbs, cache)
-```
-
-## Install System ("VaelixSetup")
-
-### Steps
-
-1. **Hardware scanning**
-   - **Explanation**: The install system starts with hardware scanning. This ensures a comprehensive and efficient hardware detection process.
-
-2. **Choose install target**
-   - **Explanation**: The user then chooses the install target. This ensures a flexible and efficient installation process.
-
-3. **Pull necessary drivers**
-   - **Explanation**: The install system then pulls the necessary drivers. This ensures a comprehensive and efficient driver management process.
-
-4. **Install core + optional modules**
-   - **Explanation**: The install system then installs the core and optional modules. This ensures a comprehensive and efficient module management process.
-
-5. **Finish setup**
-   - **Explanation**: The install system then finishes the setup. This ensures a smooth and efficient installation process.
-
-6. **Reboot into OLED BLACK + NEON FUCHSIA UI**
-   - **Explanation**: The system then reboots into the OLED BLACK + NEON FUCHSIA UI. This ensures a visually appealing and efficient user interface.
-
-## Extra Nice-To-Haves (Stretch Goals)
-
-### Feature Details
-
-- **Hot patching**: Add/remove modules without reboot
-  - **Explanation**: The system supports hot patching, allowing modules to be added or removed without a reboot. This ensures a flexible and efficient module management process.
-
-- **Live update system**: Kernel updates without full reboot (kexec-based)
-  - **Explanation**: The system supports live updates, allowing kernel updates without a full reboot (kexec-based). This ensures a smooth and efficient update process.
-
-- **App sandboxing**: VXUI apps can request strict sandbox mode
-  - **Explanation**: The system supports app sandboxing, allowing VXUI apps to request strict sandbox mode. This ensures a secure and efficient application management process.
-
-- **Advanced scripting**: Embed Lua scripts for system config/customization
-  - **Explanation**: The system supports advanced scripting, allowing Lua scripts to be embedded for system configuration and customization. This ensures a flexible and efficient system management process.
-
-- **Wayland compatibility**: Optional compatibility layer for Wayland apps
-  - **Explanation**: The system supports Wayland compatibility, with an optional compatibility layer for Wayland apps. This ensures a flexible and efficient application management process.
-
-## Big Picture Summary
-
-- **Modularity on everything**
-  - **Explanation**: The system is highly modular, allowing for flexible and efficient management of all components.
-
-- **Rust security + speed**
-  - **Explanation**: The system is written in Rust, ensuring a high level of security and performance.
-
-- **Custom graphics with real neon glam**
-  - **Explanation**: The system includes custom graphics with a real neon glam theme, ensuring a visually appealing and efficient user interface.
-
-- **Legacy hardware friendly**
-  - **Explanation**: The system is designed to be compatible with legacy hardware, ensuring a wide range of hardware support.
-
-- **Open, GitHub-native package repo**
-  - **Explanation**: The system uses an open, GitHub-native package repository, ensuring a reliable and efficient package management system.
-
-- **Room for massive future expansion**
-  - **Explanation**: The system is designed with room for massive future expansion, allowing for the addition of new features and components as needed.
+# **VaelixOS: Full-System Architecture Plan (AI-Optimized Edition)**
+
+## **Project Overview**
+VaelixOS is designed as a **next-generation modular operating system** featuring a **Rust-based microkernel (VaelixCore)**, a **custom windowing system (VegaGX)**, and a **security-first networking stack (VXNet)**. The goal is to **eliminate technical debt** from legacy OS structures while ensuring full customization, modern security, and bleeding-edge performance.
+
+---
+
+## **1. Kernel (VaelixCore)**
+### **Overview**
+- Language: **Rust** (pure), **C bridges** only for essential hardware interactions.
+- Type: **Hardened Microkernel**, modular, expandable in **hot-swappable units**.
+- Primary Focus: **Security, scalability, extensibility**.
+
+### **Core Kernel Modules**
+| Module | Purpose | Implementation |
+|--------|---------|----------------|
+| `vaelix_alloc` | Hybrid dynamic/static allocator | Custom Rust memory management |
+| `vx_tasklet` | Micro-threading over kernel threads | Priority-based task scheduling |
+| `VXChan` | Named IPC channels | Secure communication between user/kernel space |
+| `VXFS` | Custom journaling filesystem | Checksummed, built-in integrity checks |
+| `vxboot` | Bootloader system | Dynamic hardware probe, fail-safe recovery |
+
+### **Security & System Protection**
+| Feature | Purpose |
+|---------|---------|
+| VXShield | Real-time malware analysis, signature-based detection |
+| Strict Syscall Filtering | Prevents unauthorized system interactions |
+| Kernel-Space Isolation | Memory separation between user & system processes |
+
+### **Implementation Steps**
+1. Build **vaelix_alloc** with **early-out memory failure detection**.
+2. Write **VXFS** base structure with enforced **journaling & integrity checking**.
+3. Develop **VXChan** IPC framework for **secure inter-process messaging**.
+4. Implement **VXShield live scanning** via ClamAV core **and VX-specific signatures**.
+
+---
+
+## **2. Graphics System (VegaGX)**
+### **Overview**
+- GPU Access: **Direct Framebuffer (DFB)** → **Vulkan primary**, OpenGL fallback.
+- Structure: **Layered compositor**, scene graph-driven rendering pipeline.
+- Goal: **Customizable, high-performance graphical environment**.
+
+### **Core Components**
+| Component | Purpose |
+|-----------|---------|
+| VegaGX | Compositor, window manager, event hub |
+| VXWin | Window rendering system (minimal latency design) |
+| VXFont | Font system handling scalable rendering |
+| VXTheme | Custom theming engine (OLED black + neon fuchsia/purple support) |
+
+### **Implementation Steps**
+1. Write **VegaGX core compositor** with **hardware acceleration support**.
+2. Develop **VXWin** to handle **window lifecycle and rendering logic**.
+3. Implement **VXFont daemon** for **optimized font rendering**.
+4. Finalize **VXTheme**—ensure **JSON-based theme configs & hot reload**.
+
+---
+
+## **3. User Interface Layer (VXUI)**
+### **Overview**
+- **Rust-based GUI framework**, built for modularity.
+- **Zero-overhead idle rendering**, efficient **event-driven input processing**.
+- **Fully customizable windowing rules & layouts**.
+
+### **Core Components**
+| Component | Function |
+|-----------|----------|
+| VXUI Toolkit | UI framework for applications |
+| VXDE | Desktop Environment foundation |
+| VXAnim | GPU-driven animation processing |
+| Notification System | Expandable hover-based notifications |
+
+### **Implementation Steps**
+1. Write **VXUI Toolkit** with **fundamental UI widgets**.
+2. Implement **VXDE** session management logic.
+3. Integrate **VXAnim for fluid GPU-driven transitions**.
+4. Develop **notification panel system**.
+
+---
+
+## **4. Package Management (VXP)**
+### **Overview**
+- Package resolution system designed for **performance & modular builds**.
+- GitHub-based, simple **DAG dependency solver**.
+
+### **Core Components**
+| Component | Purpose |
+|-----------|---------|
+| VXP Installer | Package manager core logic |
+| vx.toml | Manifest file format |
+| VXP Security | SHA256 checksum enforcement |
+
+### **Implementation Steps**
+1. Develop **GitHub API integration** for **remote package lookup**.
+2. Implement **vx.toml parsing** for structured package metadata.
+3. Finalize **VXP Security**—enforce cryptographic validation.
+
+---
+
+## **5. Networking System (VXNet)**
+### **Overview**
+- Rust-native TCP/IP stack supporting **IPv6, WireGuard, and DNSSEC**.
+- Integrated **VXWall firewall** with security-first defaults.
+- VPN-ready support for future **peer-to-peer encrypted networks**.
+
+### **Core Components**
+| Component | Purpose |
+|-----------|---------|
+| VXNet Core | TCP/IP stack with modular network drivers |
+| VXWall | Security firewall layer |
+| VXVPN | WireGuard integration planned |
+
+### **Implementation Steps**
+1. Build **VXNet Core** TCP/IP stack with **full IPv6 support**.
+2. Implement **VXWall default security rules**.
+3. Develop **VXVPN WireGuard integration**.
+
+---
+
+## **6. Boot Sequence**
+### **Startup Order**
+1. **Bootloader (`VaeBoot`)** → Loads essential drivers.
+2. **Kernel (`VaelixCore`)** → Memory & task management initialized.
+3. **Service Loader (`vinit`)** → Core services boot in sequence.
+4. **Graphics System (`VegaGX`)** → Framebuffer activated.
+5. **UI System (`VXUI`)** → Desktop Environment initializes.
+
+---
+
+## **7. Additional Future Goals**
+- **VXSmartLoad** → AI-driven application prefetching.
+- **VXJail** → Secure containerization.
+- **Hot Kernel Patching** → Live system updates **without full reboot**.
+- **Game Mode** → Real-time optimized process sandbox for gaming.
+
+---
+
+### **Why This Version Works Better for AI**
+✅ **Clear Execution Flow** → Removes confusion about dependencies.
+✅ **Subtasks Explicitly Marked** → Each system has its own steps to follow.
+✅ **Technical Implementation Focus** → No vague descriptions—actionable tasks.
