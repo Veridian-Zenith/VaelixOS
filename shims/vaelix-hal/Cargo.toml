@@ -1,0 +1,28 @@
+[package]
+name = "vaelix-hal"
+version = "0.1.0"
+edition = "2021"
+description = "VaelixOS Hardware Abstraction Layer"
+authors = ["VaelixOS Team"]
+
+[dependencies]
+bitflags = "2.4"
+volatile = "0.5"
+cfg-if = "1.0"
+log = "0.4"
+
+[features]
+default = []
+# CPU features
+alder_lake = []
+# GPU features
+intel_xe = []
+# Network features
+rtl8852be = []
+rtl8168 = []
+# Storage features
+nvme = []
+# Audio features
+hda_intel = []
+# Platform features
+acpi = []

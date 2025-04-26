@@ -1,0 +1,187 @@
+# System Information
+
+## System
+- **Kernel**: 6.14.3-1-cachyos-eevdf (64-bit)
+  - **Compiler**: GCC v: 14.2.1
+  - **Desktop Environment**: Hyprland v: 0.48.1
+  - **Display Manager**: SDDM
+  - **Distro**: CachyOS (based on Arch Linux)
+
+## Machine
+- **Type**: Laptop
+- **Product**: HP ProBook 450 15.6 inch G9 Notebook PC
+  - **Version**: SBKPF, SBKPFV2
+  - **Chassis Type**: 10
+- **Motherboard**: HP model: 8978
+  - **Version**: KBC Version 07.71.00
+  - **Part Number**: 6Y7N8UP#ABA
+  - **UEFI**: HP v: U72 Ver. 01.14.00 (Date: 01/14/2025)
+
+## Battery
+- **ID-1**: BAT0
+  - **Charge**: 39.1 Wh (95.4%)
+  - **Condition**: 41.0/51.3 Wh (80.0%)
+  - **Volts**: 12.4
+  - **Model**: Hewlett-Packard Primary
+  - **Status**: Not charging
+
+## CPU
+- **Info**: 6-core (2-mt/4-st) model: 12th Gen Intel Core i3-1215U (64-bit)
+  - **Type**: MST AMCP
+  - **Architecture**: Alder Lake
+  - **Revision**: 4
+  - **Cache**: L1: 544 KiB, L2: 4.5 MiB, L3: 10 MiB
+  - **Speed (MHz)**: avg: 1837, min/max: 400/4400:3300
+  - **Bogomips**: 39936
+  - **Flags**: avx, avx2, ht, lm, nx, pae, sse, sse2, sse3, sse4_1, sse4_2, ssse3, vmx
+
+## Graphics
+- **Device-1**: Intel Alder Lake-UP3 GT1 [UHD Graphics]
+  - **Vendor**: Hewlett-Packard
+  - **Driver**: i915 (kernel)
+  - **Architecture**: Xe
+  - **Ports**: active: eDP-1, empty: DP-1, DP-2, DP-3, DP-4, HDMI-A-1
+  - **Bus ID**: 00:02.0
+  - **Chip ID**: 8086:46b3
+- **Device-2**: Quanta HP HD Camera
+  - **Driver**: uvcvideo
+  - **Type**: USB
+  - **Speed**: 480 Mb/s
+  - **Lanes**: 1
+  - **Bus ID**: 3-1:2
+  - **Chip ID**: 0408:5483
+- **Display**: wayland
+  - **Server**: X.org v: 1.21.1.16
+  - **Compositor**: Hyprland v: 0.48.1
+  - **Driver**: X: loaded: modesetting, alternate: fbdev, intel, vesa
+  - **DRI**: iris
+  - **GPU**: i915
+  - **Display ID**: 1
+- **Monitor-1**: eDP-1
+  - **Model**: ChiMei InnoLux 0x1512
+  - **Resolution**: 1920x1080
+  - **DPI**: 142
+  - **Diagonal**: 394mm (15.5")
+- **API**: EGL v: 1.5
+  - **Platforms**: device: 0 drv: iris, device: 1 drv: swrast
+  - **GBM**: drv: iris
+  - **Surfaceless**: drv: iris
+  - **Wayland**: drv: iris
+  - **X11**: drv: iris
+- **API**: OpenGL v: 4.6
+  - **Compatibility Version**: 4.5
+  - **Vendor**: intel mesa
+  - **Version**: 25.2.0-devel
+  - **GLX Version**: 1.4
+  - **Direct Render**: yes
+  - **Renderer**: Mesa Intel Graphics (ADL GT2)
+  - **Device ID**: 8086:46b3
+- **API**: Vulkan v: 1.4.309
+  - **Surfaces**: xcb, xlib, wayland
+  - **Device 0**: type: integrated-gpu, driver: mesa intel, device ID: 8086:46b3
+  - **Device 1**: type: cpu, driver: mesa llvmpipe, device ID: 10005:0000
+- **Tools**: api: clinfo, eglinfo, glxinfo, vulkaninfo, wl: nwg-displays, x11: xdpyinfo, xprop, xrandr
+
+## Audio
+- **Device-1**: Intel Alder Lake PCH-P High Definition Audio
+  - **Vendor**: Hewlett-Packard
+  - **Driver**: sof-audio-pci-intel-tgl
+  - **Bus ID**: 00:1f.3
+  - **Chip ID**: 8086:51c8
+- **API**: ALSA v: k6.14.3-1-cachyos-eevdf
+  - **Status**: kernel-api
+- **Server-1**: sndiod
+  - **Status**: off
+- **Server-2**: JACK
+  - **Version**: 1.9.22
+  - **Status**: off
+- **Server-3**: PipeWire
+  - **Version**: 1.4.2
+  - **Status**: active
+  - **Components**: pipewire-pulse (active), wireplumber (active), pipewire-alsa (plugin)
+
+## Network
+- **Device-1**: Realtek RTL8852BE PCIe 802.11ax Wireless Network
+  - **Vendor**: Hewlett-Packard
+  - **Driver**: rtw89_8852be (kernel)
+  - **PCIe Speed**: 2.5 GT/s
+  - **Lanes**: 1
+  - **Port**: 4000
+  - **Bus ID**: 03:00.0
+  - **Chip ID**: 10ec:b852
+  - **Interface**: wlan0
+  - **State**: up
+- **Device-2**: Realtek RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet
+  - **Vendor**: Hewlett-Packard
+  - **Driver**: r8169 (kernel)
+  - **PCIe Speed**: 2.5 GT/s
+  - **Lanes**: 1
+  - **Port**: 3000
+  - **Bus ID**: 04:00.0
+  - **Chip ID**: 10ec:8168
+  - **Interface**: enp4s0
+  - **State**: down
+
+## Bluetooth
+- **Device-1**: Realtek Bluetooth Radio
+  - **Driver**: btusb
+  - **Version**: 0.8
+  - **Type**: USB
+  - **Speed**: 12 Mb/s
+  - **Lanes**: 1
+  - **Bus ID**: 3-10:3
+  - **Chip ID**: 0bda:b85c
+- **Report**: btmgmt
+  - **ID**: hci0
+  - **RFK ID**: 0
+  - **State**: down
+  - **BT Service**: enabled, running
+  - **RFK Block**: hardware: no, software: yes
+  - **Address**: <filter>
+  - **BT Version**: 5.2
+  - **LMP Version**: 11
+
+## Drives
+- **Local Storage**: total: 238.47 GiB, used: 124.72 GiB (52.3%)
+  - **ID-1**: /dev/nvme0n1
+    - **Vendor**: KIOXIA
+    - **Model**: N/A
+    - **Size**: 238.47 GiB
+    - **Speed**: 63.2 Gb/s
+    - **Lanes**: 4
+    - **Serial**: <filter>
+    - **Temperature**: 30.9 C
+
+## Partition
+- **ID-1**: /
+  - **Size**: 233.38 GiB
+  - **Used**: 124.72 GiB (53.4%)
+  - **File System**: ext4
+  - **Device**: /dev/nvme0n1p2
+- **ID-2**: /boot/efi
+  - **Size**: 299.4 MiB
+  - **Used**: 368 KiB (0.1%)
+  - **File System**: vfat
+  - **Device**: /dev/nvme0n1p1
+
+## Swap
+- **ID-1**: swap-1
+  - **Type**: zram
+  - **Size**: 11.26 GiB
+  - **Used**: 2.74 GiB (24.4%)
+  - **Priority**: 100
+  - **Device**: /dev/zram0
+
+## Sensors
+- **System Temperatures**: cpu: 65.0 C, mobo: N/A
+- **Fan Speeds (rpm)**: N/A
+
+## Info
+- **Memory**: total: 12 GiB, estimated available: 11.26 GiB, used: 4.98 GiB (44.2%)
+- **Processes**: 274
+- **Power**: uptime: 1d 12h 38m, wakeups: 0
+- **Init**: systemd v: 257, default: graphical
+- **Packages**: 1199 (pacman: 1186, flatpak: 13)
+- **Compilers**: clang: 19.1.7, gcc: 14.2.1
+- **Shell**: fish v: 4.0.2, running in: code
+- **inxi**: 3.3.38
