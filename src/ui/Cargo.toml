@@ -1,11 +1,12 @@
 [package]
-name = "vxui"
+name = "vaelix_ui"
 version = "0.1.0"
 edition = "2021"
 
 [lib]
-name = "vxui"
+name = "vaelix_ui"
 path = "mod.rs"
 
 [dependencies]
-winit = "0.28"
+log = "0.4"
+env_logger = "0.10"

@@ -1,85 +1,54 @@
-System:
-  Kernel: 6.14.3-1-cachyos-eevdf arch: x86_64 bits: 64 compiler: gcc v: 14.2.1
-  Desktop: Hyprland v: 0.48.1 dm: SDDM Distro: CachyOS base: Arch Linux
-Machine:
-  Type: Laptop System: HP product: HP ProBook 450 15.6 inch G9 Notebook PC
-    v: SBKPF,SBKPFV2 serial: <superuser required> Chassis: type: 10
-    serial: <superuser required>
-  Mobo: HP model: 8978 v: KBC Version 07.71.00 serial: <superuser required>
-    part-nu: 6Y7N8UP#ABA UEFI: HP v: U72 Ver. 01.14.00 date: 01/14/2025
-Battery:
-  ID-1: BAT0 charge: 40.9 Wh (99.8%) condition: 41.0/51.3 Wh (80.0%)
-    volts: 12.7 min: 11.6 model: Hewlett-Packard Primary serial: <filter>
-    status: charging
-CPU:
-  Info: 6-core (2-mt/4-st) model: 12th Gen Intel Core i3-1215U bits: 64
-    type: MST AMCP arch: Alder Lake rev: 4 cache: L1: 544 KiB L2: 4.5 MiB
-    L3: 10 MiB
-  Speed (MHz): avg: 400 min/max: 400/4400:3300 cores: 1: 400 2: 400 3: 400
-    4: 400 5: 400 6: 400 7: 400 8: 400 bogomips: 39936
-  Flags: avx avx2 ht lm nx pae sse sse2 sse3 sse4_1 sse4_2 ssse3 vmx
-Graphics:
-  Device-1: Intel Alder Lake-UP3 GT1 [UHD Graphics] vendor: Hewlett-Packard
-    driver: i915 v: kernel arch: Xe ports: active: eDP-1 empty: DP-1, DP-2,
-    DP-3, DP-4, HDMI-A-1 bus-ID: 00:02.0 chip-ID: 8086:46b3
-  Device-2: Quanta HP HD Camera driver: uvcvideo type: USB rev: 2.0
-    speed: 480 Mb/s lanes: 1 bus-ID: 3-1:2 chip-ID: 0408:5483
-  Display: wayland server: X.org v: 1.21.1.16 with: Xwayland v: 24.1.6
-    compositor: Hyprland v: 0.48.1 driver: X: loaded: modesetting
-    alternate: fbdev,intel,vesa dri: iris gpu: i915 display-ID: 1
-  Monitor-1: eDP-1 model: ChiMei InnoLux 0x1512 res: 1920x1080 dpi: 142
-    diag: 394mm (15.5")
-  API: EGL v: 1.5 platforms: device: 0 drv: iris device: 1 drv: swrast gbm:
-    drv: iris surfaceless: drv: iris wayland: drv: iris x11: drv: iris
-  API: OpenGL v: 4.6 compat-v: 4.5 vendor: intel mesa v: 25.2.0-devel
-    glx-v: 1.4 direct-render: yes renderer: Mesa Intel Graphics (ADL GT2)
-    device-ID: 8086:46b3
-  API: Vulkan v: 1.4.309 surfaces: xcb,xlib,wayland device: 0
-    type: integrated-gpu driver: mesa intel device-ID: 8086:46b3 device: 1
-    type: cpu driver: mesa llvmpipe device-ID: 10005:0000
-  Info: Tools: api: clinfo, eglinfo, glxinfo, vulkaninfo wl: nwg-displays
-    x11: xdpyinfo, xprop, xrandr
-Audio:
-  Device-1: Intel Alder Lake PCH-P High Definition Audio
-    vendor: Hewlett-Packard driver: sof-audio-pci-intel-tgl bus-ID: 00:1f.3
-    chip-ID: 8086:51c8
-  API: ALSA v: k6.14.3-1-cachyos-eevdf status: kernel-api
-  Server-1: sndiod v: N/A status: off
-  Server-2: JACK v: 1.9.22 status: off
-  Server-3: PipeWire v: 1.4.2 status: active with: 1: pipewire-pulse
-    status: active 2: wireplumber status: active 3: pipewire-alsa type: plugin
-Network:
-  Device-1: Realtek RTL8852BE PCIe 802.11ax Wireless Network
-    vendor: Hewlett-Packard driver: rtw89_8852be v: kernel pcie: speed: 2.5 GT/s
-    lanes: 1 port: 4000 bus-ID: 03:00.0 chip-ID: 10ec:b852
-  IF: wlan0 state: up mac: <filter>
-  Device-2: Realtek RTL8111/8168/8211/8411 PCI Express Gigabit Ethernet
-    vendor: Hewlett-Packard driver: r8169 v: kernel pcie: speed: 2.5 GT/s
-    lanes: 1 port: 3000 bus-ID: 04:00.0 chip-ID: 10ec:8168
-  IF: enp4s0 state: down mac: <filter>
-Bluetooth:
-  Device-1: Realtek Bluetooth Radio driver: btusb v: 0.8 type: USB rev: 1.0
-    speed: 12 Mb/s lanes: 1 bus-ID: 3-10:3 chip-ID: 0bda:b85c
-  Report: btmgmt ID: hci0 rfk-id: 0 state: down bt-service: enabled,running
-    rfk-block: hardware: no software: yes address: <filter> bt-v: 5.2 lmp-v: 11
-Drives:
-  Local Storage: total: 238.47 GiB used: 126.32 GiB (53.0%)
-  ID-1: /dev/nvme0n1 vendor: KIOXIA model: N/A size: 238.47 GiB
-    speed: 63.2 Gb/s lanes: 4 serial: <filter> temp: 31.9 C
-Partition:
-  ID-1: / size: 233.38 GiB used: 126.32 GiB (54.1%) fs: ext4
-    dev: /dev/nvme0n1p2
-  ID-2: /boot/efi size: 299.4 MiB used: 368 KiB (0.1%) fs: vfat
-    dev: /dev/nvme0n1p1
-Swap:
-  ID-1: swap-1 type: zram size: 11.26 GiB used: 1.8 GiB (16.0%) priority: 100
-    dev: /dev/zram0
-Sensors:
-  System Temperatures: cpu: 66.0 C mobo: N/A
-  Fan Speeds (rpm): N/A
-Info:
-  Memory: total: 12 GiB note: est. available: 11.26 GiB used: 4.94 GiB (43.9%)
-  Processes: 270 Power: uptime: 1h 0m wakeups: 0 Init: systemd v: 257
-    default: graphical
-  Packages: 1199 pm: pacman pkgs: 1186 pm: flatpak pkgs: 13 Compilers:
-    clang: 19.1.7 gcc: 14.2.1 Shell: fish v: 4.0.2 running-in: code inxi: 3.3.38
+# Host System Setup Instructions
+
+## Prerequisites
+
+- **Operating System**: Linux (preferably Ubuntu 20.04 or later)
+- **Rust**: Install Rust using `rustup`
+- **Cargo**: Comes with Rust installation
+- **mkisofs**: For creating ISO files
+
+## Installation Steps
+
+1. **Install Rust and Cargo**:
+   ```bash
+   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+   source $HOME/.cargo/env
+   ```
+
+2. **Install mkisofs**:
+   ```bash
+   sudo apt-get update
+   sudo apt-get install genisoimage
+   ```
+
+3. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yourusername/vaelixos.git
+   cd vaelixos
+   ```
+
+4. **Build the Project**:
+   ```bash
+   ./scripts/build.sh
+   ```
+
+5. **Run Tests**:
+   ```bash
+   ./scripts/test.sh
+   ```
+
+6. **Build the Full System ISO**:
+   ```bash
+   ./scripts/build_full_system_iso.sh
+   ```
+
+7. **Build the Installer ISO**:
+   ```bash
+   ./scripts/build_installer_iso.sh
+   ```
+
+## Additional Notes
+
+- Ensure all dependencies are installed and up-to-date.
+- The build scripts will compile the kernel and other modules, and create the necessary ISO files.
+- The installer ISO can be used to install VaelixOS on a target system.

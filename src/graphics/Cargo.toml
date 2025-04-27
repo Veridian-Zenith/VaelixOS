@@ -1,12 +1,12 @@
 [package]
-name = "vega_gx"
+name = "vaelix_graphics"
 version = "0.1.0"
 edition = "2021"
 
 [lib]
-name = "vega_gx"
+name = "vaelix_graphics"
 path = "mod.rs"
 
 [dependencies]
-vulkano = "0.33"
-winit = "0.28"
+log = "0.4"
+env_logger = "0.10"

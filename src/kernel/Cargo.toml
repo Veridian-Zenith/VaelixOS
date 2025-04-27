@@ -8,5 +8,6 @@ name = "vaelix_core"
 path = "mod.rs"
 
 [dependencies]
+sha2 = "0.10"
 log = "0.4"
 env_logger = "0.10"
