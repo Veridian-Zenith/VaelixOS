@@ -1,10 +1,10 @@
 /// Basic memory allocation for VaelixCore.
 /// This module provides simple memory allocation functions.
 pub mod vaelix_alloc {
-    use core::alloc::{GlobalAlloc, Layout};
+    use crate::kernel::alloc::{GlobalAlloc, Layout};
     use core::cell::UnsafeCell;
     use core::ptr;
-    use core::sync::atomic::{AtomicUsize, Ordering};
+    use crate::kernel::sync::atomic::{AtomicUsize, Ordering};
 
     struct VaelixAllocator {
         heap_start: UnsafeCell<*mut u8>,
@@ -47,12 +47,12 @@ pub mod vaelix_alloc {
     }
 
     /// The global allocator instance used by the kernel.
-    #[global_allocator]
-    static GLOBAL: VaelixAllocator = VaelixAllocator {
-        heap_start: UnsafeCell::new(core::ptr::null_mut()),
-        heap_end: UnsafeCell::new(core::ptr::null_mut()),
-        next: AtomicUsize::new(0),
-    };
+#[global_allocator]
+static GLOBAL: VaelixAllocator = VaelixAllocator {
+    heap_start: UnsafeCell::new(core::ptr::null_mut()),
+    heap_end: UnsafeCell::new(core::ptr::null_mut()),
+    next: AtomicUsize::new(0),
+};
 
     /// Provides a C-compatible interface for allocating memory.
     ///

@@ -1,4 +1,6 @@
 pub mod vxchan {
+    use crate::kernel::sync::{Arc, Mutex};
+    use crate::kernel::collections::HashMap;
     pub fn init() { // Added pub
         println!("Initializing VXChan...");
         // Initialize the VXChan system
@@ -14,11 +16,14 @@ pub mod vxchan {
         // Send a message to the channel
     }
 
-    pub fn receive_message(channel: &str) -> String {
-        println!("Receiving message from channel: {}", channel);
-        // Receive a message from the channel
-        String::from("Received message")
-    }
+pub fn receive_message(&self, channel: &str) -> Option<Vec<u8>> {
+    let mut channels = self.channels.lock().unwrap();
+    channels.get_mut(channel).map(|msg| {
+        let message = msg.clone();
+        msg.clear();
+        message
+    })
+}
 
     pub fn update() {
         println!("Updating VXChan...");

@@ -1,4 +1,5 @@
 mod kernel;
+use crate::boot::vaeboot;
 
 const KERNEL_HEAP_START: usize = 0x40000000; // Example start address
 const KERNEL_HEAP_SIZE: usize = 1024 * 1024;   // Example size (1MB)

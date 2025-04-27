@@ -1,21 +1,12 @@
+// Bootloader system module
 pub mod vxboot {
-    pub fn init() { // Added pub
-        println!("Initializing VXBoot...");
-        // Initialize the VXBoot system
-    }
+use crate::kernel::fs::File;
+use crate::kernel::io::{self, Read};
+use crate::kernel::path::Path;
+use crate::kernel::process::Command;
 
-    pub fn load_kernel() {
-        println!("Loading kernel...");
-        // Load the kernel
-    }
-
-    pub fn boot_system() {
-        println!("Booting system...");
-        // Boot the system
-    }
-
-    pub fn update() {
-        println!("Updating VXBoot...");
-        // Update the VXBoot system
+    pub fn load_drivers() -> io::Result<()> {
+        // Load essential drivers
+        Ok(())
     }
 }
