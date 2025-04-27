@@ -1,52 +1,24 @@
-pub mod vxfs {
-    use crate::kernel::fs;
-    use crate::kernel::io::{self, Write};
-    use crate::kernel::path::Path;
-    use crate::kernel::sync::{Arc, Mutex};
-    use crate::kernel::time::{SystemTime, UNIX_EPOCH};
-pub fn init() { // Added pub
-    println!("Initializing VXFS...");
-    // Initialize the VXFS system
-}
+// src/kernel/vxfs.rs
 
-pub fn replay_journal(&self) -> io::Result<()> {
-    let journal = self.journal.lock().unwrap();
-    for entry in journal.iter() {
-        match entry.operation {
-            Operation::Write => {
-                fs::write(&entry.path, &entry.data)?;
-            }
-            Operation::Delete => {
-                fs::remove_file(&entry.path)?;
-            }
-        }
-    }
+use std::io::{self};
+
+pub fn write() -> io::Result<()> {
+    // Write function implementation
+    println!("Writing to file...");
     Ok(())
 }
 
-    pub fn create_file(path: &str) {
-        println!("Creating file: {}", path);
-        // Create a new file
-    }
+pub fn remove_file() -> io::Result<()> {
+    // Remove file function implementation
+    println!("Removing file...");
+    Ok(())
+}
 
-    pub fn read_file(path: &str) -> String {
-        println!("Reading file: {}", path);
-        // Read the file content
-        String::from("File content")
-    }
+pub fn initialize_fs() {
+    write().unwrap();
+    remove_file().unwrap();
+}
 
-    pub fn write_file(path: &str, content: &str) {
-        println!("Writing to file {}: {}", path, content);
-        // Write content to the file
-    }
-
-    pub fn delete_file(path: &str) {
-        println!("Deleting file: {}", path);
-        // Delete the file
-    }
-
-    pub fn update() {
-        println!("Updating VXFS...");
-        // Update the VXFS system
-    }
+pub fn use_fs_functions() {
+    initialize_fs();
 }

@@ -1,6 +1,15 @@
+# Ignore archive files
 *.tar.xz
 *.tar.gz
+
+# Ignore specific directories
 linux-6.14.4/
 src/target/
 target/
+
+# Ignore Cargo.lock (if this is a library crate)
 Cargo.lock
+# Ignore build artifacts
+*.rs.bk
+# Ignore editor backup files
+*~

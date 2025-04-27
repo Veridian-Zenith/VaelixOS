@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Test script for VaelixOS
+# VaelixOS Test Script
+# This script runs the tests for the VaelixOS project.
 
 # Run the tests
-cargo test
+cargo test --all
 
 echo "Tests completed successfully."

@@ -8,3 +8,4 @@ name = "vxui"
 path = "mod.rs"
 
 [dependencies]
+winit = "0.28"

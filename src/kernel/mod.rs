@@ -1,12 +1,19 @@
-pub mod vaelix_alloc;
+// src/kernel/mod.rs
+
 pub mod vx_tasklet;
+pub mod vxboot;
+pub mod vaelix_alloc;
 pub mod vxchan;
 pub mod vxfs;
-pub mod vxboot;
+pub mod sync;
+pub mod collections;
+pub mod fs;
+pub mod io;
+pub mod path;
+pub mod time;
+pub mod process;
+pub mod alloc;
 
-pub use vaelix_alloc::init as vaelix_alloc_init;
-pub use vx_tasklet::init as vx_tasklet_init;
-pub use vx_tasklet::process_events as vx_tasklet_process_events;
-pub use vxchan::init as vxchan_init;
-pub use vxfs::init as vxfs_init;
-pub use vxboot::init as vxboot_init;
+pub use vx_tasklet::vx_tasklet_init;
+pub use vaelix_alloc::vaelix_alloc_init;
+pub use vxchan::vxchan_init;

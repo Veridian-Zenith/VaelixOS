@@ -1,12 +1,17 @@
-// Bootloader system module
-pub mod vxboot {
-use crate::kernel::fs::File;
-use crate::kernel::io::{self, Read};
-use crate::kernel::path::Path;
-use crate::kernel::process::Command;
+// src/kernel/vxboot.rs
 
-    pub fn load_drivers() -> io::Result<()> {
-        // Load essential drivers
-        Ok(())
-    }
+use std::io::{self};
+
+pub fn boot() -> io::Result<()> {
+    // Boot function implementation
+    println!("Booting the system...");
+    Ok(())
+}
+
+pub fn initialize_boot() {
+    boot().unwrap();
+}
+
+pub fn use_boot_functions() {
+    initialize_boot();
 }

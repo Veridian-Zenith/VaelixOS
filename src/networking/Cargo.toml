@@ -8,3 +8,4 @@ name = "vxnet"
 path = "mod.rs"
 
 [dependencies]
+tokio = { version = "1.28", features = ["full"] }

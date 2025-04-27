@@ -8,3 +8,5 @@ name = "vega_gx"
 path = "mod.rs"
 
 [dependencies]
+vulkano = "0.33"
+winit = "0.28"
