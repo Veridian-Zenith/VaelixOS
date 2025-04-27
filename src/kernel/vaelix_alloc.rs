@@ -1,6 +1,4 @@
 use core::alloc::{GlobalAlloc, Layout};
-use core::ptr;
-use core::ptr::null_mut;
 use std::alloc::System;
 
 struct VaelixAllocator;

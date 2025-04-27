@@ -4,7 +4,7 @@ pub mod vaelix_alloc;
 pub mod vx_tasklet;
 pub mod vxboot;
 pub mod vxchan;
-pub use vxchan::vxchan_init;
+pub use vxchan::vxchan::vxchan_init;
 pub mod alloc;
 pub mod collections;
 pub mod fs;
