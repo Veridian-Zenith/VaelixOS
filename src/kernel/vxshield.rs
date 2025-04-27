@@ -5,7 +5,7 @@ pub mod vxshield {
         Ok(())
     }
 
-    pub fn validate_package(package: &str) -> Result<(), &'static str> {
+    pub fn validate_package(_package: &str) -> Result<(), &'static str> {
         // Validate a package for security
         // Placeholder implementation
         Ok(())
