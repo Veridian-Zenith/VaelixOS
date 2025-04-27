@@ -1,19 +1,18 @@
-# Ignore archive files
-*.tar.xz
-*.tar.gz
-
-# Ignore specific directories
-linux-6.14.4/
-target/
-target-*
-# target/  <-- This line is removed based on the edits
-
-# Ignore Cargo.lock (if this is a library crate)
-Cargo.lock
-
 # Ignore build artifacts
-*.rs.bk
+target
+iso
+linux-6.14.4
+# Ignore temporary files
+*.tmp
+*.log
+*.tar.xz
+# Ignore IDE-specific files
+.vscode
+.idea
 
-# Ignore editor backup files
-*~
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
 
+# Ignore Rust-specific files
+Cargo.lock
