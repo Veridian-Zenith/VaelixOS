@@ -1,33 +1,27 @@
-// vxchan.rs
-
-// Named IPC channels module
 pub mod vxchan {
-    use std::sync::{Arc, Mutex};
-    use std::collections::HashMap;
-
-    struct VXChan {
-        channels: Arc<Mutex<HashMap<String, Vec<u8>>>>,
+    pub fn init() { // Added pub
+        println!("Initializing VXChan...");
+        // Initialize the VXChan system
     }
 
-    impl VXChan {
-        pub fn new() -> Self {
-            VXChan {
-                channels: Arc::new(Mutex::new(HashMap::new())),
-            }
-        }
+    pub fn create_channel(name: &str) {
+        println!("Creating channel: {}", name);
+        // Create a new channel
+    }
 
-        pub fn send(&self, channel: &str, message: &[u8]) {
-            let mut channels = self.channels.lock().unwrap();
-            channels.entry(channel.to_string()).or_insert_with(Vec::new).extend_from_slice(message);
-        }
+    pub fn send_message(channel: &str, message: &str) {
+        println!("Sending message to channel {}: {}", channel, message);
+        // Send a message to the channel
+    }
 
-        pub fn receive(&self, channel: &str) -> Option<Vec<u8>> {
-            let mut channels = self.channels.lock().unwrap();
-            channels.get_mut(channel).map(|msg| {
-                let mut message = msg.clone();
-                message.clear();
-                message
-            })
-        }
+    pub fn receive_message(channel: &str) -> String {
+        println!("Receiving message from channel: {}", channel);
+        // Receive a message from the channel
+        String::from("Received message")
+    }
+
+    pub fn update() {
+        println!("Updating VXChan...");
+        // Update the VXChan system
     }
 }

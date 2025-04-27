@@ -4,3 +4,9 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+vaelix_core = { path = "src/kernel" }
+vega_gx = { path = "src/graphics" }
+vxui = { path = "src/ui" }
+vxnet = { path = "src/networking" }
+vxp = { path = "src/package" }
+libc = "0.2.172"

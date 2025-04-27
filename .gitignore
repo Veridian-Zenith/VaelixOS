@@ -1,3 +1,5 @@
 *.tar.xz
 *.tar.gz
 linux-6.14.4/
+target/
+Cargo.lock

@@ -4,5 +4,39 @@
 version = 4
 
 [[package]]
+name = "libc"
+version = "0.2.172"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d750af042f7ef4f724306de029d18836c26c1765a54a6a3f094cbd23a7267ffa"
+
+[[package]]
+name = "vaelix_core"
+version = "0.1.0"
+
+[[package]]
 name = "vaelixos"
+version = "0.1.0"
+dependencies = [
+ "libc",
+ "vaelix_core",
+ "vega_gx",
+ "vxnet",
+ "vxp",
+ "vxui",
+]
+
+[[package]]
+name = "vega_gx"
+version = "0.1.0"
+
+[[package]]
+name = "vxnet"
+version = "0.1.0"
+
+[[package]]
+name = "vxp"
+version = "0.1.0"
+
+[[package]]
+name = "vxui"
 version = "0.1.0"

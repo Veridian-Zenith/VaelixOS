@@ -1,38 +1,40 @@
 # VaelixOS
 
-VaelixOS is a next-generation modular operating system designed to eliminate technical debt from legacy OS structures while ensuring full customization, modern security, and bleeding-edge performance.
+## Overview
+VaelixOS is a next-generation modular operating system featuring a Rust-based microkernel (VaelixCore), a custom windowing system (VegaGX), and a security-first networking stack (VXNet). The goal is to eliminate technical debt from legacy OS structures while ensuring full customization, modern security, and bleeding-edge performance.
 
 ## Features
+- **Microkernel Architecture**: VaelixCore handles essential services like memory management, IPC, and basic scheduling.
+- **Custom Windowing System**: VegaGX provides a high-performance graphical environment with hardware acceleration support.
+- **Security-First Networking**: VXNet includes IPv6, WireGuard, and DNSSEC support, with a built-in firewall (VXWall).
+- **Package Management**: VXP is designed for performance and modular builds, with a GitHub-based dependency solver.
+- **Modular UI Framework**: VXUI is built for customization and modularity, with zero-overhead idle rendering.
 
-- **Rust-based Microkernel (VaelixCore)**
-- **Custom Windowing System (VegaGX)**
-- **Security-First Networking Stack (VXNet)**
-- **Modular and Extensible Architecture**
+## Installation
+To install VaelixOS, follow these steps:
 
-## Getting Started
+1. **Download the Installer ISO**: Download the VaelixOS installer ISO from the [releases page](https://github.com/veridian-zenith/vaelixos/releases).
+2. **Create a Bootable USB Drive**: Use a tool like `dd` or `Rufus` to create a bootable USB drive from the ISO file.
+3. **Boot from the USB Drive**: Insert the USB drive into the target device and boot from it.
+4. **Run the Installer Script**: Follow the on-screen instructions to install VaelixOS on the target device.
 
-To get started with VaelixOS, follow these steps:
+## Testing
+To test VaelixOS, you can use a virtual machine like QEMU or VirtualBox. Follow these steps to set up a virtual machine:
 
-1. **Clone the Repository**
-   ```sh
-   git clone https://github.com/yourusername/vaelixos.git
-   cd vaelixos
-   ```
+1. **Download the System ISO**: Download the VaelixOS system ISO from the [releases page](https://github.com/veridian-zenith/vaelixos/releases).
+2. **Create a New Virtual Machine**: Create a new virtual machine in QEMU or VirtualBox.
+3. **Attach the ISO File**: Attach the VaelixOS system ISO as the bootable disk for the virtual machine.
+4. **Configure the Virtual Machine**: Set the appropriate hardware configuration, such as CPU, memory, and storage.
+5. **Start the Virtual Machine**: Start the virtual machine and follow the on-screen instructions to install and test VaelixOS.
 
-2. **Build the Project**
-   ```sh
-   ./build.sh
-   ```
+## Documentation
+For more detailed information, please refer to the following documentation:
 
-3. **Run the Project**
-   ```sh
-   ./run.sh
-   ```
-
-## Contributing
-
-Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file for details on how to contribute to this project.
+- [VaelixCore Kernel Documentation](docs/kernel.md)
+- [VegaGX Graphics System Documentation](docs/graphics.md)
+- [VXNet Networking Stack Documentation](docs/networking.md)
+- [VXP Package Management Documentation](docs/package.md)
+- [VXUI User Interface Documentation](docs/ui.md)
 
 ## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+VaelixOS is licensed under the MIT License. See the `LICENSE` file for more details.
