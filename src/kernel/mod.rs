@@ -15,5 +15,4 @@ pub mod process;
 pub mod alloc;
 
 pub use vx_tasklet::vx_tasklet_init;
-pub use vaelix_alloc::vaelix_alloc_init;
 pub use vxchan::vxchan_init;

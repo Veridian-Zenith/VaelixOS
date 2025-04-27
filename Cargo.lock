@@ -1598,6 +1598,14 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5a5f39404a5da50712a4c1eecf25e90dd62b613502b7e925fd4e4d19b5c96512"
 
 [[package]]
+name = "vaelix_core"
+version = "0.1.0"
+dependencies = [
+ "env_logger",
+ "log",
+]
+
+[[package]]
 name = "vaelixos"
 version = "0.1.0"
 dependencies = [
@@ -1610,6 +1618,7 @@ dependencies = [
  "serde_json",
  "tokio",
  "toml",
+ "vaelix_core",
  "vulkano",
  "winit",
 ]
@@ -1619,6 +1628,14 @@ name = "vec_map"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f1bddf1187be692e79c5ffeab891132dfb0f236ed36a43c7ed39f1165ee20191"
+
+[[package]]
+name = "vega_gx"
+version = "0.1.0"
+dependencies = [
+ "vulkano",
+ "winit",
+]
 
 [[package]]
 name = "version_check"
@@ -1674,6 +1691,29 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
+]
+
+[[package]]
+name = "vxnet"
+version = "0.1.0"
+dependencies = [
+ "tokio",
+]
+
+[[package]]
+name = "vxp"
+version = "0.1.0"
+dependencies = [
+ "serde",
+ "serde_json",
+ "toml",
+]
+
+[[package]]
+name = "vxui"
+version = "0.1.0"
+dependencies = [
+ "winit",
 ]
 
 [[package]]
