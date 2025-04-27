@@ -4,9 +4,9 @@
 
 # Ignore specific directories
 linux-6.14.4/
-src/target/
 target/
 target-*
+# target/  <-- This line is removed based on the edits
 
 # Ignore Cargo.lock (if this is a library crate)
 Cargo.lock
